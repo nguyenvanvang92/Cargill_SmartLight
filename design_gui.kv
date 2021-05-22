@@ -1,0 +1,686 @@
+<HomeScreen>:
+    NavigationLayout:
+        ScreenManager:
+            id: sm
+            Screen:
+                name: "login"
+                FitImage:
+                    orientation: 'horizontal'
+                    source: 'background.png'
+                    #pos_hint: {'center_x': .5, 'center_y':.8}
+                    aspect_ratio: False
+                    allow_stretch: True
+
+                MDLabel:
+                    text: 'Login'
+                    pos_hint: {'center_y': .85}
+                    font_style: 'H4'
+                    halign: 'center'
+                    theme_text_color: 'Custom'
+                    text_color: 0,0,0,1
+                MDTextField:
+                    id: id_user_name
+                    theme_text_color: "Custom"
+                    text_color: 242/255, 217/255, 116/255,1
+                    hint_text: 'Enter your email'
+                    pos_hint: {'center_x': .5,'center_y': .6}
+                    size_hint_x: .8
+                MDTextField:
+                    id: id_user_password
+                    hint_text: 'Password'
+                    pos_hint: {'center_x': .5,'center_y': .5}
+                    size_hint_x: .8
+                    password: True
+                MDLabel:
+                    id: id_loading
+                    text:'Loading...'
+                    pos_hint: {'center_y': .35}
+                    font_style: 'H5'
+                    halign: 'center'
+                    theme_text_color: 'Custom'
+                    text_color: 0,0,0,1
+                    opacity: 0
+                MDRoundFlatButton:
+                    text: 'Log in'
+                    pos_hint: {'center_x': .5, 'center_y': .2}
+                    size_hint_x:.5
+                    text_color: 27/255, 23/255, 23/255, 1 
+                    on_release: 
+                        nav._refresh_tabs()
+                        sm.current = "nav"
+
+            Screen:
+                name: "nav"
+                MDBoxLayout:
+                    orientation: "vertical"
+                    MDToolbar:
+                        title: 'GARGILL.DT - SMART LED SYSTEM'
+                    MDBottomNavigation:
+                        id: nav
+                        size_hint: 1,1
+#**********************************************************************************
+#navigation controll
+#**********************************************************************************
+                        MDBottomNavigationItem:
+                            text: "Controll" 
+                            size_hint: 1,1
+                            ScrollView:
+                                do_scroll_x: False
+                                do_scroll_y: True
+                                MDGridLayout:
+                                    id: scroll_controll
+                                    adaptive_height: True
+                                    size_hint_x: None
+                                    size_hint_y: None
+                                    cols: 1
+                                    spacing: 30
+                                    padding: 50
+#**********************************************************************************
+#content nha nhap xa
+#**********************************************************************************
+                                    MDCard:
+                                        size_hint: None, None
+                                        size: root.width-100, "120dp"
+                                        MDBoxLayout:
+                                            orientation: "vertical" 
+                                            MDCard:
+                                                #md_bg_color: 1,0,0,1
+                                                size_hint_y: 0.5
+                                                MDBoxLayout:
+                                                    orientation: "horizontal"
+                                                    MDLabel:
+                                                        text: "NHÀ NHẬP XÁ"
+                                                        size_hint: 0.5,1
+                                                        halign: "center"
+                                                    MDIconButton:
+                                                        icon: "information-outline"
+                                                        size_hint_y: 1
+                                                        on_release: 
+                                                            root.event_btn_infor_pnx()
+                                            MDGridLayout:
+                                                cols: 4
+                                                rows: 1
+                                                MDFlatButton:
+                                                    id: d1
+                                                    size_hint: 1,1
+                                                    on_release:
+                                                        root.number_light = "1"
+                                                        root.event_btn()
+                                                    MDGridLayout:
+                                                        rows: 2
+                                                        MDIcon:
+                                                            icon: "ceiling-light"
+                                                            theme_text_color: "Custom"
+                                                            text_color: 0,0,0,1
+                                                            halign: "center"
+                                                        MDLabel:
+                                                            text: "Đèn Vách\n1"
+                                                            halign: "center"
+                                                MDFlatButton:
+                                                    id: d2
+                                                    size_hint: 1,1
+                                                    on_release:
+                                                        root.number_light = "2"
+                                                        root.event_btn()
+                                                    MDGridLayout:
+                                                        rows: 2
+                                                        MDIcon:
+                                                            icon: "ceiling-light"
+                                                            theme_text_color: "Custom"
+                                                            text_color: 0,0,0,1
+                                                            halign: "center"
+                                                        MDLabel:
+                                                            text: "Đèn Vách\n2"
+                                                            halign: "center"
+
+                                                MDFlatButton:
+                                                    id: d3
+                                                    size_hint: 1,1
+                                                    on_release:
+                                                        root.number_light = "3"
+                                                        root.event_btn()
+                                                    MDGridLayout:
+                                                        rows: 2
+                                                        MDIcon:
+                                                            icon: "ceiling-light"
+                                                            theme_text_color: "Custom"
+                                                            text_color: 0,0,0,1
+                                                            halign: "center"
+                                                        MDLabel:
+                                                            text: "Đèn Trần\n"
+                                                            halign: "center"
+                                                MDFlatButton:
+                                                    id: d11
+                                                    size_hint: 1,1
+                                                    on_release:
+                                                        root.number_light = "11"
+                                                        root.event_btn()
+                                                    MDGridLayout:
+                                                        rows: 2
+                                                        MDIcon:
+                                                            icon: "ceiling-light"
+                                                            theme_text_color: "Custom"
+                                                            text_color: 0,0,0,1
+                                                            halign: "center"     
+                                                        MDLabel:
+                                                            text: "Bật Sáng\nTất Cả"
+                                                            halign: "center"   
+#**********************************************************************************
+#content Kho Nguyen Lieu
+#**********************************************************************************                                           
+                                    MDCard:
+                                        size_hint: None, None
+                                        size: root.width-100, "600dp"
+                                        MDBoxLayout:
+                                            orientation: "vertical" 
+                                            MDCard:
+                                                size_hint_y: 0.1
+                                                MDBoxLayout:
+                                                    orientation: "horizontal"
+                                                    MDLabel:
+                                                        text: "KHO NGUYÊN LIỆU"
+                                                        size_hint: 0.5,1
+                                                        halign: "center"
+                                                    MDIconButton:
+                                                        icon: "information-outline"
+                                                        size_hint_y: 1
+                                                        on_release: 
+                                                            root.event_btn_infor()
+                                            MDGridLayout:
+                                                cols: 4
+                                                rows: 5
+                                                MDFlatButton:
+                                                    id: d1
+                                                    size_hint: 1,1
+                                                    on_release:
+                                                        root.number_light = "1"
+                                                        root.event_btn()
+                                                    MDGridLayout:
+                                                        rows: 2
+                                                        MDIcon:
+                                                            icon: "ceiling-light"
+                                                            theme_text_color: "Custom"
+                                                            text_color: 0,0,0,1
+                                                            halign: "center"
+                                                        MDLabel:
+                                                            text: "Đèn Cũ\n1"
+                                                            halign: "center"
+                                                MDFlatButton:
+                                                    id: d2
+                                                    size_hint: 1,1
+                                                    on_release:
+                                                        root.number_light = "2"
+                                                        root.event_btn()
+                                                    MDGridLayout:
+                                                        rows: 2
+                                                        MDIcon:
+                                                            icon: "ceiling-light"
+                                                            theme_text_color: "Custom"
+                                                            text_color: 0,0,0,1
+                                                            halign: "center"
+                                                        MDLabel:
+                                                            text: "OĐèn Cũ\n2"
+                                                            halign: "center"
+
+                                                MDFlatButton:
+                                                    id: d3
+                                                    size_hint: 1,1
+                                                    on_release:
+                                                        root.number_light = "3"
+                                                        root.event_btn()
+                                                    MDGridLayout:
+                                                        rows: 2
+                                                        MDIcon:
+                                                            icon: "ceiling-light"
+                                                            theme_text_color: "Custom"
+                                                            text_color: 0,0,0,1
+                                                            halign: "center"
+                                                        MDLabel:
+                                                            text: "Đèn Cũ\n3"
+                                                            halign: "center"
+                                                MDFlatButton:
+                                                    id: d4
+                                                    size_hint: 1,1
+                                                    on_release:
+                                                        root.number_light = "4"
+                                                        root.event_btn()
+                                                    MDGridLayout:
+                                                        rows: 2
+                                                        MDIcon:
+                                                            icon: "ceiling-light"
+                                                            theme_text_color: "Custom"
+                                                            text_color: 0,0,0,1
+                                                            halign: "center"     
+                                                        MDLabel:
+                                                            text: "Đèn Cũ\n4"
+                                                            halign: "center"  
+                                                MDFlatButton:
+                                                    id: d5
+                                                    size_hint: 1,1
+                                                    on_release:
+                                                        root.number_light = "5"
+                                                        root.event_btn()
+                                                    MDGridLayout:
+                                                        rows: 2
+                                                        MDIcon:
+                                                            icon: "ceiling-light"
+                                                            theme_text_color: "Custom"
+                                                            text_color: 0,0,0,1
+                                                            halign: "center"
+                                                        MDLabel:
+                                                            text: "Đèn Cũ\n5"
+                                                            halign: "center"
+                                                MDFlatButton:
+                                                    id: d6
+                                                    size_hint: 1,1
+                                                    on_release:
+                                                        root.number_light = "6"
+                                                        root.event_btn()
+                                                    MDGridLayout:
+                                                        rows: 2
+                                                        MDIcon:
+                                                            icon: "ceiling-light"
+                                                            theme_text_color: "Custom"
+                                                            text_color: 0,0,0,1
+                                                            halign: "center"
+                                                        MDLabel:
+                                                            text: "Đèn Cũ\n6"
+                                                            halign: "center"
+
+                                                MDFlatButton:
+                                                    id: d7
+                                                    size_hint: 1,1
+                                                    on_release:
+                                                        root.number_light = "7"
+                                                        root.event_btn()
+                                                    MDGridLayout:
+                                                        rows: 2
+                                                        MDIcon:
+                                                            icon: "ceiling-light"
+                                                            theme_text_color: "Custom"
+                                                            text_color: 0,0,0,1
+                                                            halign: "center"
+                                                        MDLabel:
+                                                            text: "Đèn Cũ\n7"
+                                                            halign: "center"
+                                                MDFlatButton:
+                                                    id: d8
+                                                    size_hint: 1,1
+                                                    on_release:
+                                                        root.number_light = "8"
+                                                        root.event_btn()
+                                                    MDGridLayout:
+                                                        rows: 2
+                                                        MDIcon:
+                                                            icon: "ceiling-light"
+                                                            theme_text_color: "Custom"
+                                                            text_color: 0,0,0,1
+                                                            halign: "center"     
+                                                        MDLabel:
+                                                            text: "Đèn Cũ\n8"
+                                                            halign: "center" 
+                                                MDFlatButton:
+                                                    id: d9
+                                                    size_hint: 1,1
+                                                    on_release:
+                                                        root.number_light = "9"
+                                                        root.event_btn()
+                                                    MDGridLayout:
+                                                        rows: 2
+                                                        MDIcon:
+                                                            icon: "ceiling-light"
+                                                            theme_text_color: "Custom"
+                                                            text_color: 0,0,0,1
+                                                            halign: "center"
+                                                        MDLabel:
+                                                            text: "Đèn Cũ\n9"
+                                                            halign: "center"
+
+                                                MDFlatButton:
+                                                    id: d10
+                                                    size_hint: 1,1
+                                                    on_release:
+                                                        root.number_light = "10"
+                                                        root.event_btn()
+                                                    MDGridLayout:
+                                                        rows: 2
+                                                        MDIcon:
+                                                            icon: "ceiling-light"
+                                                            theme_text_color: "Custom"
+                                                            text_color: 0,0,0,1
+                                                            halign: "center"
+                                                        MDLabel:
+                                                            text: "Đèn Cũ\n10"
+                                                            halign: "center"
+                                                MDFlatButton:
+                                                    id: d11
+                                                    size_hint: 1,1
+                                                    on_release:
+                                                        root.number_light = "11"
+                                                        root.event_btn()
+                                                    MDGridLayout:
+                                                        rows: 2
+                                                        MDIcon:
+                                                            icon: "ceiling-light"
+                                                            theme_text_color: "Custom"
+                                                            text_color: 0,0,0,1
+                                                            halign: "center"     
+                                                        MDLabel:
+                                                            text: "Đèn Cũ\n11"
+                                                            halign: "center"        
+                                                MDFlatButton:
+                                                    id: d12
+                                                    size_hint: 1,1
+                                                    on_release:
+                                                        root.number_light = "12"
+                                                        root.event_btn()
+                                                    MDGridLayout:
+                                                        rows: 2
+                                                        MDIcon:
+                                                            icon: "ceiling-light"
+                                                            theme_text_color: "Custom"
+                                                            text_color: 0,0,0,1
+                                                            halign: "center"
+                                                        MDLabel:
+                                                            text: "Đèn Mới\n1"
+                                                            halign: "center"
+                                                MDFlatButton:
+                                                    id: d13
+                                                    size_hint: 1,1
+                                                    on_release:
+                                                        root.number_light = "13"
+                                                        root.event_btn()
+                                                    MDGridLayout:
+                                                        rows: 2
+                                                        MDIcon:
+                                                            icon: "ceiling-light"
+                                                            theme_text_color: "Custom"
+                                                            text_color: 0,0,0,1
+                                                            halign: "center"     
+                                                        MDLabel:
+                                                            text: "Đèn Mới\n2"
+                                                            halign: "center" 
+                                                MDFlatButton:
+                                                    id: d14
+                                                    size_hint: 1,1
+                                                    on_release:
+                                                        root.number_light = "14"
+                                                        root.event_btn()
+                                                    MDGridLayout:
+                                                        rows: 2
+                                                        MDIcon:
+                                                            icon: "ceiling-light"
+                                                            theme_text_color: "Custom"
+                                                            text_color: 0,0,0,1
+                                                            halign: "center"
+                                                        MDLabel:
+                                                            text: "Đèn Mới\n3"
+                                                            halign: "center"
+
+                                                MDFlatButton:
+                                                    id: d15
+                                                    size_hint: 1,1
+                                                    on_release:
+                                                        root.number_light = "15"
+                                                        root.event_btn()
+                                                    MDGridLayout:
+                                                        rows: 2
+                                                        MDIcon:
+                                                            icon: "ceiling-light"
+                                                            theme_text_color: "Custom"
+                                                            text_color: 0,0,0,1
+                                                            halign: "center"
+                                                        MDLabel:
+                                                            text: "Đèn Mới\n4"
+                                                            halign: "center"
+                                                MDFlatButton:
+                                                    id: d16
+                                                    size_hint: 1,1
+                                                    on_release:
+                                                        root.number_light = "16"
+                                                        root.event_btn()
+                                                    MDGridLayout:
+                                                        rows: 2
+                                                        MDIcon:
+                                                            icon: "ceiling-light"
+                                                            theme_text_color: "Custom"
+                                                            text_color: 0,0,0,1
+                                                            halign: "center"     
+                                                        MDLabel:
+                                                            text: "Đèn\n Kệ Bao "
+                                                            halign: "center"  
+                                                MDFlatButton:
+                                                    id: d17
+                                                    size_hint: 1,1
+                                                    on_release:
+                                                        root.number_light = "17"
+                                                        root.event_btn()
+                                                    MDGridLayout:
+                                                        rows: 2
+                                                        MDIcon:
+                                                            icon: "ceiling-light"
+                                                            theme_text_color: "Custom"
+                                                            text_color: 0,0,0,1
+                                                            halign: "center"     
+                                                        MDLabel:
+                                                            text: "Bật Sáng\nTất Cả"
+                                                            halign: "center"      
+#**********************************************************************************
+#content phong lo hoi khi nen bao tri
+#********************************************************************************** 
+                                    MDCard:
+                                        size_hint: None, None
+                                        size: root.width-100, "360dp"
+                                        MDBoxLayout:
+                                            orientation: "vertical" 
+                                            MDCard:
+                                                size_hint_y: 0.1
+                                                MDBoxLayout:
+                                                    orientation: "horizontal"
+                                                    MDLabel:
+                                                        text: "PHONG LH, KN, BT"
+                                                        size_hint: 0.5,1
+                                                        halign: "center"
+                                                    MDIconButton:
+                                                        icon: "information-outline"
+                                                        size_hint_y: 1
+                                                        on_release: 
+                                                            root.event_btn_infor()
+                                            MDGridLayout:
+                                                cols: 4
+                                                rows: 3
+                                                MDFlatButton:
+                                                    id: d1
+                                                    size_hint: 1,1
+                                                    on_release:
+                                                        root.number_light = "1"
+                                                        root.event_btn()
+                                                    MDGridLayout:
+                                                        rows: 2
+                                                        MDIcon:
+                                                            icon: "ceiling-light"
+                                                            theme_text_color: "Custom"
+                                                            text_color: 0,0,0,1
+                                                            halign: "center"
+                                                        MDLabel:
+                                                            text: "Phòng\nMáy Khí Nén 1"
+                                                            halign: "center"
+                                                MDFlatButton:
+                                                    id: d2
+                                                    size_hint: 1,1
+                                                    on_release:
+                                                        root.number_light = "2"
+                                                        root.event_btn()
+                                                    MDGridLayout:
+                                                        rows: 2
+                                                        MDIcon:
+                                                            icon: "ceiling-light"
+                                                            theme_text_color: "Custom"
+                                                            text_color: 0,0,0,1
+                                                            halign: "center"
+                                                        MDLabel:
+                                                            text: "Phòng\nMáy Khí Nén 2"
+                                                            halign: "center"
+
+                                                MDFlatButton:
+                                                    id: d3
+                                                    size_hint: 1,1
+                                                    on_release:
+                                                        root.number_light = "3"
+                                                        root.event_btn()
+                                                    MDGridLayout:
+                                                        rows: 2
+                                                        MDIcon:
+                                                            icon: "ceiling-light"
+                                                            theme_text_color: "Custom"
+                                                            text_color: 0,0,0,1
+                                                            halign: "center"
+                                                        MDLabel:
+                                                            text: "Phòng\nLò Hơi 1"
+                                                            halign: "center"
+                                                MDFlatButton:
+                                                    id: d4
+                                                    size_hint: 1,1
+                                                    on_release:
+                                                        root.number_light = "4"
+                                                        root.event_btn()
+                                                    MDGridLayout:
+                                                        rows: 2
+                                                        MDIcon:
+                                                            icon: "ceiling-light"
+                                                            theme_text_color: "Custom"
+                                                            text_color: 0,0,0,1
+                                                            halign: "center"     
+                                                        MDLabel:
+                                                            text: "Phòng\nLò Hơi 2"
+                                                            halign: "center"  
+                                                MDFlatButton:
+                                                    id: d5
+                                                    size_hint: 1,1
+                                                    on_release:
+                                                        root.number_light = "5"
+                                                        root.event_btn()
+                                                    MDGridLayout:
+                                                        rows: 2
+                                                        MDIcon:
+                                                            icon: "ceiling-light"
+                                                            theme_text_color: "Custom"
+                                                            text_color: 0,0,0,1
+                                                            halign: "center"
+                                                        MDLabel:
+                                                            text: "Phòng\nBảo Trì 1"
+                                                            halign: "center"
+                                                MDFlatButton:
+                                                    id: d6
+                                                    size_hint: 1,1
+                                                    on_release:
+                                                        root.number_light = "6"
+                                                        root.event_btn()
+                                                    MDGridLayout:
+                                                        rows: 2
+                                                        MDIcon:
+                                                            icon: "ceiling-light"
+                                                            theme_text_color: "Custom"
+                                                            text_color: 0,0,0,1
+                                                            halign: "center"
+                                                        MDLabel:
+                                                            text: "Phòng\nBảo Trì 2"
+                                                            halign: "center"
+
+                                                MDFlatButton:
+                                                    id: d7
+                                                    size_hint: 1,1
+                                                    on_release:
+                                                        root.number_light = "7"
+                                                        root.event_btn()
+                                                    MDGridLayout:
+                                                        rows: 2
+                                                        MDIcon:
+                                                            icon: "ceiling-light"
+                                                            theme_text_color: "Custom"
+                                                            text_color: 0,0,0,1
+                                                            halign: "center"
+                                                        MDLabel:
+                                                            text: "Phòng\nKho Spare 1"
+                                                            halign: "center"
+                                                MDFlatButton:
+                                                    id: d8
+                                                    size_hint: 1,1
+                                                    on_release:
+                                                        root.number_light = "8"
+                                                        root.event_btn()
+                                                    MDGridLayout:
+                                                        rows: 2
+                                                        MDIcon:
+                                                            icon: "ceiling-light"
+                                                            theme_text_color: "Custom"
+                                                            text_color: 0,0,0,1
+                                                            halign: "center"     
+                                                        MDLabel:
+                                                            text: "Phòng\nKho Spare 2"
+                                                            halign: "center" 
+                                                MDFlatButton:
+                                                    id: d9
+                                                    size_hint: 1,1
+                                                    on_release:
+                                                        root.number_light = "9"
+                                                        root.event_btn()
+                                                    MDGridLayout:
+                                                        rows: 2
+                                                        MDIcon:
+                                                            icon: "ceiling-light"
+                                                            theme_text_color: "Custom"
+                                                            text_color: 0,0,0,1
+                                                            halign: "center"
+                                                        MDLabel:
+                                                            text: "Sân Ngoài\nPhòng Bảo Trì"
+                                                            halign: "center"
+
+                                                MDFlatButton:
+                                                    id: d10
+                                                    size_hint: 1,1
+                                                    on_release:
+                                                        root.number_light = "10"
+                                                        root.event_btn()
+                                                    MDGridLayout:
+                                                        rows: 2
+                                                        MDIcon:
+                                                            icon: "ceiling-light"
+                                                            theme_text_color: "Custom"
+                                                            text_color: 0,0,0,1
+                                                            halign: "center"
+                                                        MDLabel:
+                                                            text: "Phòng\nMáy Biến Áp"
+                                                            halign: "center"
+                                                MDFlatButton:
+                                                    id: d11
+                                                    size_hint: 1,1
+                                                    on_release:
+                                                        root.number_light = "11"
+                                                        root.event_btn()
+                                                    MDGridLayout:
+                                                        rows: 2
+                                                        MDIcon:
+                                                            icon: "ceiling-light"
+                                                            theme_text_color: "Custom"
+                                                            text_color: 0,0,0,1
+                                                            halign: "center"     
+                                                        MDLabel:
+                                                            text: "Bật Sáng\nTất Cả"
+                                                            halign: "center"     
+
+#**********************************************************************************
+#navigation Report
+#**********************************************************************************                                           
+                        MDBottomNavigationItem:
+                            text: "Report"
+                            name: "report"
+                            size_hint: 1,1
+                            switch_tab: 
+                                "report"
+                            MDLabel:
+                                text: "vuong"
+
+
+
+            
