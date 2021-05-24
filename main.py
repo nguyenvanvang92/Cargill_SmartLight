@@ -1,4 +1,5 @@
-from logging import root
+from logging import error, root
+from kivy.core import window
 from kivymd.app import MDApp
 from kivy.clock import Clock 
 from kivy.uix.screenmanager import Screen,ScreenManager,FadeTransition,SwapTransition, FallOutTransition,RiseInTransition
@@ -17,6 +18,8 @@ from plyer import notification
 import pyowm
 from datetime import datetime
 from getpass import getpass
+from kivy.core.window import Window
+from kivymd.uix.picker import MDDatePicker
 
 
 app = firebase.FirebaseApplication("https://datakivyapp.firebaseio.com/", None)
@@ -36,36 +39,57 @@ auth = firebase.auth()
 database = firebase.database()
 
 Builder.load_file("design_gui.kv")
-Builder.load_file("gui_infor_pnx.kv")
+Builder.load_file("design_gui_content.kv")
 
 flag_btn_phongnhapxa = [False,False,False,False,False,False,False,False,False,False,False,False]
 status_light = ["", "", "", "", "", "", "", "", "", "", "", ""]
 
-class Infor_pnx(Screen):
-    pass    
+class Content_pnx(MDBoxLayout):
+    pass
+
+
+class Content_knl(MDBoxLayout):
+    pass
 
 class HomeScreen(Screen):
     number_light = ""
+    def __init__(self, **kwargs):
+        super(HomeScreen, self).__init__(**kwargs)
+        self.ids.scroll_controll.add_widget(
+            MDExpansionPanel(
+                icon = "kivymd_icon.jpeg",
+                content=Content_pnx(),
+                panel_cls=MDExpansionPanelOneLine(
+                    text="Phong Nhap Xa",
+                )
+            )
+        )
+        self.ids.scroll_controll.add_widget(
+            MDExpansionPanel(
+                icon = "kivymd_icon.jpeg",
+                content=Content_knl(),
+                panel_cls=MDExpansionPanelOneLine(
+                    text="Kho Nguyen Lieu",
+                )
+            )
+        )
     
     def on_enter(self, *args):
         self.ids.nav._refresh_tabs()
 
     def event_btn(self, *args):
         global flag_btn_phongnhapxa
-        #flag_btn_phongnhapxa[int(self.number_light) - 1] = True
-
-    def event_btn_infor(self, *args):
-        self.manager.current = "infor_pnx"
+        flag_btn_phongnhapxa[int(self.number_light) - 1] = True
 
 class DemoApp(MDApp):
-    height = 200
+    height = Window.height
+    width = Window.width
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
 
     def build(self):
         self.sm = ScreenManager()
         self.sm.add_widget(HomeScreen(name='homescreen'))
-        self.sm.add_widget(Infor_pnx(name="infor_pnx"))
         self.theme_cls.primary_palette = 'Blue'
         self.theme_cls.primary_hue = '600'
         self.theme_cls.theme_style = 'Light'
