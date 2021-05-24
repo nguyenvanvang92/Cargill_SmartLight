@@ -21,6 +21,8 @@ from getpass import getpass
 from kivy.core.window import Window
 from kivymd.uix.picker import MDDatePicker
 
+x = 516
+#Window.size = (x,16*x/9) 
 
 app = firebase.FirebaseApplication("https://datakivyapp.firebaseio.com/", None)
 
@@ -57,19 +59,172 @@ class HomeScreen(Screen):
         super(HomeScreen, self).__init__(**kwargs)
         self.ids.scroll_controll.add_widget(
             MDExpansionPanel(
-                icon = "kivymd_icon.jpeg",
+                icon = "NhaNhapXa.png",
                 content=Content_pnx(),
                 panel_cls=MDExpansionPanelOneLine(
-                    text="Phong Nhap Xa",
+                text="Phòng Nhập Xá",
                 )
             )
         )
         self.ids.scroll_controll.add_widget(
             MDExpansionPanel(
-                icon = "kivymd_icon.jpeg",
+                icon = "NhaKho.png",
                 content=Content_knl(),
                 panel_cls=MDExpansionPanelOneLine(
-                    text="Kho Nguyen Lieu",
+                text="Kho Nguyên Liệu",
+                )
+            )
+        )
+        self.ids.scroll_controll.add_widget(
+            MDExpansionPanel(
+                icon = "PhongLoHoi.png",
+                content=Content_knl(),
+                panel_cls=MDExpansionPanelOneLine(
+                text="Phòng Lò Hơi",
+                )
+            )
+        )
+        self.ids.scroll_controll.add_widget(
+            MDExpansionPanel(
+                icon = "PhongKhiNen.png",
+                content=Content_knl(),
+                panel_cls=MDExpansionPanelOneLine(
+                text="Phòng Khí Nén",
+                )
+            )
+        )
+        self.ids.scroll_controll.add_widget(
+            MDExpansionPanel(
+                icon = "PhongBaoTri.png",
+                content=Content_knl(),
+                panel_cls=MDExpansionPanelOneLine(
+                text="Phòng Bảo Trì",
+                )
+            )
+        )
+        self.ids.scroll_controll.add_widget(
+            MDExpansionPanel(
+                icon = "ThapSanXuat.png",
+                content=Content_knl(),
+                panel_cls=MDExpansionPanelOneLine(
+                text="Tháp Sản Xuất\nTầng 1",
+                )
+            )
+        )
+        self.ids.scroll_controll.add_widget(
+            MDExpansionPanel(
+                icon = "ThapSanXuat.png",
+                content=Content_knl(),
+                panel_cls=MDExpansionPanelOneLine(
+                text="Tháp Sản Xuất\nTầng 2",
+                )
+            )
+        )
+        self.ids.scroll_controll.add_widget(
+            MDExpansionPanel(
+                icon = "ThapSanXuat.png",
+                content=Content_knl(),
+                panel_cls=MDExpansionPanelOneLine(
+                text="Tháp Sản Xuất\nTầng 3",
+                )
+            )
+        )
+        self.ids.scroll_controll.add_widget(
+            MDExpansionPanel(
+                icon = "ThapSanXuat.png",
+                content=Content_knl(),
+                panel_cls=MDExpansionPanelOneLine(
+                text="Tháp Sản Xuất\nTầng 4",
+                )
+            )
+        )
+        self.ids.scroll_controll.add_widget(
+            MDExpansionPanel(
+                icon = "ThapSanXuat.png",
+                content=Content_knl(),
+                panel_cls=MDExpansionPanelOneLine(
+                text="Tháp Sản Xuất\nTầng 5",
+                )
+            )
+        )
+        self.ids.scroll_controll.add_widget(
+            MDExpansionPanel(
+                icon = "ThapSanXuat.png",
+                content=Content_knl(),
+                panel_cls=MDExpansionPanelOneLine(
+                text="Tháp Sản Xuất\nTầng 6",
+                )
+            )
+        )
+        self.ids.scroll_controll.add_widget(
+            MDExpansionPanel(
+                icon = "ThapSanXuat.png",
+                content=Content_knl(),
+                panel_cls=MDExpansionPanelOneLine(
+                text="Tháp Sản Xuất\nTầng 7",
+                )
+            )
+        )
+        self.ids.scroll_controll.add_widget(
+            MDExpansionPanel(
+                icon = "ThapSanXuat.png",
+                content=Content_knl(),
+                panel_cls=MDExpansionPanelOneLine(
+                text="Tháp Sản Xuất\nTầng 8",
+                )
+            )
+        )
+        self.ids.scroll_controll.add_widget(
+            MDExpansionPanel(
+                icon = "DanThaoTac.png",
+                content=Content_knl(),
+                panel_cls=MDExpansionPanelOneLine(
+                text="Dàn Thao Tác Ngoài Trời",
+                )
+            )
+        )
+        self.ids.scroll_controll.add_widget(
+            MDExpansionPanel(
+                icon = "TangHam.png",
+                content=Content_knl(),
+                panel_cls=MDExpansionPanelOneLine(
+                text="Tháp Sản Xuất\nTầng Hầm 1",
+                )
+            )
+        )
+        self.ids.scroll_controll.add_widget(
+            MDExpansionPanel(
+                icon = "TangHam.png",
+                content=Content_knl(),
+                panel_cls=MDExpansionPanelOneLine(
+                text="Tháp Sản Xuất\nTầng Hầm 2",
+                )
+            )
+        )
+        self.ids.scroll_controll.add_widget(
+            MDExpansionPanel(
+                icon = "TangTret.png",
+                content=Content_knl(),
+                panel_cls=MDExpansionPanelOneLine(
+                text="Tầng Trệt",
+                )
+            )
+        )
+        self.ids.scroll_controll.add_widget(
+            MDExpansionPanel(
+                icon = "PhongCanThuoc.png",
+                content=Content_knl(),
+                panel_cls=MDExpansionPanelOneLine(
+                text="Phòng Cân Thuốc",
+                )
+            )
+        )
+        self.ids.scroll_controll.add_widget(
+            MDExpansionPanel(
+                icon = "CangXuatHang.png",
+                content=Content_knl(),
+                panel_cls=MDExpansionPanelOneLine(
+                text="Cảng Xuất Hàng",
                 )
             )
         )
@@ -91,7 +246,7 @@ class DemoApp(MDApp):
         self.sm = ScreenManager()
         self.sm.add_widget(HomeScreen(name='homescreen'))
         self.theme_cls.primary_palette = 'Blue'
-        self.theme_cls.primary_hue = '600'
+        self.theme_cls.primary_hue = '900'
         self.theme_cls.theme_style = 'Light'
         return self.sm
 
