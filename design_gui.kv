@@ -1,7 +1,7 @@
 <HomeScreen>:
     NavigationLayout:
         ScreenManager:
-            id: sm
+            id: Screen_login
             Screen:
                 name: "login"
                 FitImage:
@@ -44,24 +44,31 @@
                     text: 'Log in'
                     pos_hint: {'center_x': .5, 'center_y': .2}
                     size_hint_x:.5
-                    text_color: 27/255, 23/255, 23/255, 1 
+                    text_color: 27/255, 23/255, 23/255, 1
                     on_release: 
                         nav._refresh_tabs()
-                        sm.current = "nav"
+                        Screen_login.current = "nav"
             Screen:
                 name: "nav"
                 MDBoxLayout:
                     orientation: "vertical"
+                    
                     MDToolbar:
-                        title: 'GARGILL.DT - SMART LED SYSTEM'
+                        title: 'GARGILL VN - SMART LED SYSTEM'
+                        left_action_items: [["menu", lambda x: root.event_nav()]]
                         md_bg_color: 24/255, 71/255, 133/255, 1
-                        specific_text_color: 1, 1, 1, 1
+                        specific_text_color: 1, 1, 1, 1                        
                     MDBottomNavigation:
                         id: nav
                         size_hint: 1,1
                         MDBottomNavigationItem:
                             text: "Controll" 
                             size_hint: 1,1
+                            canvas:
+                                Rectangle:
+                                    #source: 'backgroud.jpg'
+                                    size: self.size
+                                    pos: self.pos
                             ScrollView:
                                 do_scroll_x: False
                                 do_scroll_y: True
@@ -75,13 +82,93 @@
                                     spacing: 10
                                     padding: 50
                         MDBottomNavigationItem:
-                            text: "Report"
-                            name: "report"
+                            text: "Timer"
+                            name: "Timer"
                             size_hint: 1,1
+                            canvas:
+                                Rectangle:
+                                    #source: 'backgroud.jpg'
+                                    size: self.size
+                                    pos: self.pos
+                            ScrollView:
+                                do_scroll_x: False
+                                do_scroll_y: True
+                                MDGridLayout:
+                                    id: scroll_timer
+                                    adaptive_height: True
+                                    size: (root.width, root.height)
+                                    size_hint_x: None
+                                    size_hint_y: None
+                                    cols: 1
+                                    spacing: 10
+                                    padding: 50
+                        MDBottomNavigationItem:
+                            text: "Setting"
+                            name: "Setting"
+                            size_hint: 1,1
+                            canvas:
+                                Rectangle:
+                                    #source: 'backgroud.jpg'
+                                    size: self.size
+                                    pos: self.pos
                             switch_tab: 
-                                "report"
-                            MDLabel:
-                                text: "test"
+                                #"report"
+                            MDLabel:                                
+                                text: "Setting"
+        MDNavigationDrawer:
+            id: nav_drawer
+            BoxLayout:
+                orientation: 'vertical'
+                spacing: '8dp'
+                padding: '8dp'
+                Image:
+                    source:'info.png'
+                MDLabel:
+                    text: 'VU LE\nTECHNOLOGY CO., LTD'
+                    color: 16/255,111/255,183/255,1
+                    font_style: 'Button'
+                    font_size: 80
+                    halign: 'center'
+                    size_hint_y: None
+                MDLabel:
+                    text: ''
+                    font_size: 20
+                    halign: 'center'
+                    size_hint_y: None
+                
+                ScrollView:
+                    MDList:                        
+                        OneLineIconListItem:
+                            text: 'contact information'
+                            on_press:
+                                import webbrowser
+                                webbrowser.open('https://vuletech.com/')
+                            IconLeftWidget:
+                                icon: 'company.png'
+                                size: 120,120
+                        OneLineIconListItem:
+                            text: 'assembling workshop'
+                            on_press:
+                                import webbrowser
+                                webbrowser.open('https://goo.gl/maps/CuGAiw6upQFw9KSa7')
+                            IconLeftWidget:
+                                icon: 'map.png'
+                                size: 120,120
+                        OneLineIconListItem:
+                            text:'email: info@vuletech.com'
+                            IconLeftWidget:
+                                icon: 'email.png'
+                                size: 120,120
+                        OneLineIconListItem:
+                            text:'phone: (028) 3620 8179'
+                            IconLeftWidget:
+                                icon: 'phone.png'
+                                size: 120,120
+                        OneLineIconListItem:
+                            text:'fax: (028) 3620 8178'
+                            IconLeftWidget:
+                                icon: 'fax.png'
+                                size: 120,120
 
 
 
