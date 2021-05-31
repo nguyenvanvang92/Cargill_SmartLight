@@ -1,5 +1,5 @@
 <HomeScreen>:
-    NavigationLayout:
+    MDNavigationLayout:
         ScreenManager:
             id: Screen_login
             Screen:
@@ -46,7 +46,7 @@
                     size_hint_x:.5
                     text_color: 27/255, 23/255, 23/255, 1
                     on_release: 
-                        nav._refresh_tabs()
+                        
                         Screen_login.current = "nav"
             Screen:
                 name: "nav"
@@ -115,6 +115,38 @@
                                 #"report"
                             MDLabel:                                
                                 text: "Setting"
+                            GridLayout:
+                                rows: 1
+                                cols: 6
+                                padding : 1
+                                size_hint_y: 0.8
+                                background_color : 208/255,208/255,208/255,0.1
+                                GridLayout:
+                                    rows: 3
+                                    cols: 3
+                                    padding: 10
+                                    spacing: 10
+                                    Label:
+                                        text: 'option'
+                                    Label:
+                                        text: 'memory address'
+                                    Label:
+                                        text: 'data content'
+                                    Button:
+                                        text: 'Write'
+                                        on_release:
+                                            root.get_content_write()
+                                    TextInput:
+                                        id: id_content_address_meomory_write
+                                    TextInput:
+                                        id: id_content_write
+                                    Button:
+                                        text: 'Read'
+                                    TextInput:
+                                        id: id_content_address_memory_read
+                                    Label:
+                                        id: id_label_content_read
+                                        text: ''
         MDNavigationDrawer:
             id: nav_drawer
             BoxLayout:

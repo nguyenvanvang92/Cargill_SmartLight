@@ -36,7 +36,7 @@ version = 0.1
 
 # (list) Application requirements
 # comma separated e.g. requirements = sqlite3,kivy
-requirements = python3,kivy==2.0.0rc1,requests,certifi,urllib3,chardet,idna,plyer,pyrebase5,gcloud,oauth2client,requests-toolbelt,python-jwt,cryptography,pycryptodome,jwcrypto,httplib2,pyasn1,pyasn1-modules,rsa,google-cloud,google-auth,hostpython3,google,protobuf,google-cloud-firestore, google-api-core,firebase,kivymd,plyer,pyparsing,pyowm==2.10.0,geojson,pillow
+requirements = python3,kivy==2.0.0rc1,requests,certifi,urllib3,chardet,idna,plyer,pyrebase5,gcloud,oauth2client,requests-toolbelt,python-jwt,cryptography,pycryptodome,jwcrypto,httplib2,pyasn1,pyasn1-modules,rsa,google-cloud,google-auth,hostpython3,google,protobuf,google-cloud-firestore, google-api-core,firebase,https://github.com/kivymd/KivyMD/archive/master.zip,plyer,pyparsing,pyowm==2.10.0,geojson,pillow
 
 # (str) Custom source folders for requirements
 # Sets custom source for any requirements with recipes
